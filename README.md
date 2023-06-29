@@ -1,18 +1,22 @@
 # Create-a-Token
-This is a Solidity smart contract for a token called "META" with the abbreviation "MTA". The contract allows for minting (creating) and burning (destroying) tokens. Here are the main components of the contract:
 
-1. Public variables:
-   - `token_name`: A string variable to store the name of the token.
-   - `token_abbr`: A string variable to store the abbreviation of the token.
-   - `total_supply`: An unsigned integer variable to store the total supply of tokens.
+This is a Solidity smart contract for a basic token called MyToken (META). The contract allows users to mint and burn tokens.
 
-2. Mapping variable:
-   - `balances`: A mapping that associates addresses with their token balances. The keys are addresses, and the values are unsigned integers representing the balance of each address.
+## Requirements
 
-3. Mint function:
-   - `mint`: A function that takes an address `_address` and a value `_value` as parameters. It increases the total supply by `_value` and adds `_value` tokens to the balance of the `_address`.
+1. The contract has public variables to store the details about the token: `token_name` (Token Name), `token_abbr` (Token Abbreviation), and `total_supply` (Total Token Supply).
+2. The contract has a mapping of addresses to balances (`balances`), which keeps track of the token balance for each address.
+3. The contract has a `mint` function that takes two parameters: an address and a value. This function increases the total token supply by the given value and increases the balance of the specified address by that amount.
+4. The contract has a `burn` function that works in the opposite way of the `mint` function. It takes an address and a value, deducts the value from the total supply, and reduces the balance of the specified address by that amount.
+5. The `burn` function includes conditionals to ensure that the balance of the sender is greater than or equal to the amount that is supposed to be burned.
 
-4. Burn function:
-   - `burn`: A function that takes an address `_address` and a value `_value` as parameters. It checks if the balance of the `_address` is greater than or equal to `_value`. If it is, it deducts `_value` from the total supply and the balance of the `_address`.
+## Usage
 
-Note that the contract follows the SPDX-License-Identifier MIT, indicating that it is licensed under the MIT License.
+1. Deploy the contract to the Ethereum network.
+2. Use the following functions to interact with the contract:
+   - `mint(address _address, uint _value)`: Mints new tokens by increasing the total supply and the balance of the specified address by the given value.
+   - `burn(address _address, uint _value)`: Burns tokens by reducing the total supply and the balance of the specified address by the given value. The function includes conditionals to ensure that the balance of the sender is sufficient for the burn operation.
+
+## License
+
+The contract is licensed under the MIT License.
